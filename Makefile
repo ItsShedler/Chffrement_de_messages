@@ -1,6 +1,8 @@
 compilation:
 	gcc -c main.c
 	gcc -c vigenere.c
-	gcc -o vigenere main.o vigenere.o vigenere.h
+	gcc -c cesar.c
+	gcc -c others.c
+	gcc -o ch main.o vigenere.o others.o cesar.o vigenere.h cesar.h others.h
 execute:
-	./vigenere
+	./ch

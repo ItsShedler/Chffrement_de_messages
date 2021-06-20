@@ -1,13 +1,38 @@
+
+/******************************************************************************
+*  ASR => M2101                                                               *
+*******************************************************************************
+*                                                                             *
+*  N° de Sujet : 3                                                            *
+*                                                                             *
+*******************************************************************************
+*                                                                             *
+*  Intitulé : Projet-Chiffrement                                              *
+*                                                                             *
+*******************************************************************************
+*                                                                             *
+*  Nom-prénom1 : MIQUEL Maxime                                                *
+*                                                                             *
+*  Nom-prénom2 : TIAN Shijie                                                  *
+*                                                                             *
+*******************************************************************************
+*                                                                             *
+*  Nom du fichier : vigenere.c                                                *
+*                                                                             *
+******************************************************************************/
+
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "vigenere.h"
+#include "others.h"
 
 void chiffre_vigenere(char cle[], char* message){
 
     int i = 0;
     for (char* ptr= message;*ptr !='\0' && i<strlen(cle);++ptr){
-        *ptr=code_char(cle[i],*ptr);
+        *ptr=code_charV(cle[i],*ptr);
         if (i==strlen(cle)-1){
             i=0;
         }else{
@@ -19,7 +44,7 @@ void chiffre_vigenere(char cle[], char* message){
 void dechiffre_vigenere(char cle[], char* message){
     int i = 0;
     for (char* ptr= message;*ptr !='\0' && i<strlen(cle);++ptr){
-        *ptr=decode_char(*ptr,cle[i]);
+        *ptr=decode_charV(*ptr,cle[i]);
         if (i==strlen(cle)-1){
             i=0;
         }else{
@@ -28,30 +53,13 @@ void dechiffre_vigenere(char cle[], char* message){
     }
 }
 
-char code_char(char c, char m){
+char code_charV(char c, char m){
     char new = ((c-97 + m-97)%26)+97;
     return new;
 }
 
-char decode_char(char c, char m){
+char decode_charV(char c, char m){
     char new = mod((c-97)-(m-97),26)+97;
     return new;
 }
 
-int mod(int a, int b){
-    if(a<b && a>=0){
-        return a;
-    }
-    if (a>=b){
-        while (a>=b){
-            a=a-b;
-        }
-        return a;
-    }
-    if (a<0){
-        while(a<0){
-            a=a+b;
-        }
-        return a;
-    }
-}

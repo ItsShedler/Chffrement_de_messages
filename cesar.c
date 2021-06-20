@@ -17,20 +17,42 @@
 *                                                                             *
 *******************************************************************************
 *                                                                             *
-*  Nom du fichier : vigenere.h                                                *
+*  Nom du fichier : cesar.c                                                   *
 *                                                                             *
 ******************************************************************************/
 
 
 
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "cesar.h"
+char coder_char(int k, char c)
+{
+    if (c >= 'a' && c <= 'z') {
+        return 'a' + (c - 'a' + k) % 26 ;
+    }  else{
+        return c ;
+    }
+}
+char decode_char(int k, char c)
+{
+    if (c >= 'a' && c <= 'z') {
+        return 'a' + (c - 'a' - k) % 26 ;
+    } else{
+        return c;
+    }
+}
 
-char code_charV(char c, char m);
-
-char decode_charV(char c, char m);
-
-void chiffre_vigenere(char cle[], char* message);
-
-void dechiffre_vigenere(char cle[], char* message);
+void cesar_chiffrer(int k, char * message)
+{
+    for (char * ptr = message; *ptr != '\0'; ++ptr) {
+        *ptr = coder_char(k, *ptr) ;
+	*ptr=*ptr-'a';
+    }
+}
+void cesar_dechiffrer(int k, char * message)
+{
+    for (char * ptr = message; *ptr != '\0'; ++ptr) {
+	*ptr=*ptr+'a';
+        *ptr = decode_char(k, *ptr) ;
+    }
+}

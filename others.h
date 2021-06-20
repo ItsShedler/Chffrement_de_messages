@@ -17,20 +17,14 @@
 *                                                                             *
 *******************************************************************************
 *                                                                             *
-*  Nom du fichier : vigenere.h                                                *
+*  Nom du fichier : others.h                                                  *
 *                                                                             *
 ******************************************************************************/
 
 
-
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include <ctype.h>
+#include <stdbool.h>
 
-char code_charV(char c, char m);
-
-char decode_charV(char c, char m);
-
-void chiffre_vigenere(char cle[], char* message);
-
-void dechiffre_vigenere(char cle[], char* message);
+bool verificationAlphanumerique(char message[]);
+int mod(int a, int b);

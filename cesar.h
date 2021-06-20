@@ -1,4 +1,3 @@
-
 /******************************************************************************
 *  ASR => M2101                                                               *
 *******************************************************************************
@@ -17,20 +16,14 @@
 *                                                                             *
 *******************************************************************************
 *                                                                             *
-*  Nom du fichier : vigenere.h                                                *
+*  Nom du fichier : cesar.h                                                   *
 *                                                                             *
 ******************************************************************************/
 
 
-
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
-char code_charV(char c, char m);
-
-char decode_charV(char c, char m);
-
-void chiffre_vigenere(char cle[], char* message);
-
-void dechiffre_vigenere(char cle[], char* message);
+char coder_char(int k, char c);
+char decode_char(int k, char c);
+void cesar_chiffrer(int k, char * message);
+void cesar_dechiffrer(int k, char * message);
